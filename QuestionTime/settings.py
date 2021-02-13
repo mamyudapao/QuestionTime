@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'rest_auth',
     'rest_auth.registration',
 
+    'crispy_forms',
+
     'users'
 ]
 
@@ -125,6 +127,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_URL = "accounts/login/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -145,5 +151,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES' : (
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+    ), 
+    'DEFAULT_PERMISSION_CLASSES' : (
+        'rest_framework.permissions.IsAuthenticated',
     )
 }
